@@ -1,0 +1,3271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description"
+content="MVC Bookkeeping & Accounting Services — practical bookkeeping, accounting, BIR tax compliance, business registration, SEC compliance, payroll, and business support for Philippine businesses.">
+
+<title>MVC Bookkeeping & Accounting Services</title>
+
+<style>
+:root {
+  color-scheme: light dark;
+
+  --bg: light-dark(#f7f9fc, #0b1220);
+  --surface: light-dark(#ffffff, #111a2b);
+  --surface-2: light-dark(#eef4f8, #172337);
+  --text: light-dark(#152235, #f5f7fb);
+  --muted: light-dark(#64748b, #a9b5c7);
+  --brand: light-dark(#0b5c66, #56c5c9);
+  --brand-2: light-dark(#123d56, #7bb8dc);
+  --accent: light-dark(#d9a441, #e6b85a);
+  --border: light-dark(#dbe4ec, #26344b);
+
+  --shadow: 0 20px 50px rgba(16, 37, 54, .10);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#app {
+  min-height: 100vh;
+  background-color: var(--bg);
+}
+
+.container {
+  width: min(1160px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  backdrop-filter: blur(14px);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--bg) 88%,
+      transparent
+    );
+
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  min-height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: none;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+
+  gap: 26px;
+
+  color: var(--muted);
+
+  font-size: .94rem;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+.nav-cta,
+.primary {
+  border: 0;
+
+  cursor: pointer;
+
+  background: var(--brand);
+  color: white;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  font-weight: 750;
+
+  box-shadow:
+    0 8px 18px
+    rgba(11,92,102,.18);
+}
+
+.nav-cta:hover,
+.primary:hover {
+  transform: translateY(-1px);
+}
+
+.menu {
+  display: none;
+
+  background: transparent;
+
+  border: 1px solid var(--border);
+
+  color: var(--text);
+
+  border-radius: 9px;
+
+  padding: 8px 10px;
+
+  cursor: pointer;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding: 92px 0 76px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.12fr .88fr;
+
+  gap: 64px;
+
+  align-items: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+
+  gap: 8px;
+
+  align-items: center;
+
+  color: var(--brand);
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: .12em;
+
+  font-size: .74rem;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 26px;
+  height: 2px;
+
+  background: var(--accent);
+}
+
+h1 {
+  font-size:
+    clamp(
+      2.7rem,
+      6vw,
+      5rem
+    );
+
+  line-height: .99;
+
+  letter-spacing: -.055em;
+
+  margin: 16px 0 24px;
+
+  max-width: 760px;
+}
+
+.hero p {
+  color: var(--muted);
+
+  font-size: 1.12rem;
+
+  max-width: 650px;
+}
+
+.actions {
+  display: flex;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+
+  margin-top: 30px;
+}
+
+.secondary {
+  padding: 11px 17px;
+
+  border: 1px solid var(--border);
+
+  background: var(--surface);
+
+  border-radius: 10px;
+
+  font-weight: 750;
+
+  cursor: pointer;
+}
+
+.hero-card {
+  background:
+    linear-gradient(
+      160deg,
+      var(--surface),
+      var(--surface-2)
+    );
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  padding: 28px;
+
+  box-shadow: var(--shadow);
+
+  position: relative;
+}
+
+.hero-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 130px;
+  height: 130px;
+
+  border-radius: 50%;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--accent) 18%,
+      transparent
+    );
+
+  right: -45px;
+  top: -45px;
+}
+
+.card-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 26px;
+}
+
+.status {
+  font-size: .75rem;
+
+  padding: 6px 9px;
+
+  border-radius: 99px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--brand) 13%,
+      transparent
+    );
+
+  color: var(--brand);
+
+  font-weight: 800;
+}
+
+.metric {
+  font-size: 2.1rem;
+
+  font-weight: 850;
+
+  letter-spacing: -.04em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.check-list {
+  list-style: none;
+
+  padding: 0;
+
+  margin: 24px 0 0;
+
+  display: grid;
+
+  gap: 12px;
+}
+
+.check-list li {
+  display: flex;
+
+  gap: 10px;
+
+  align-items: flex-start;
+}
+
+.check {
+  flex: 0 0 21px;
+
+  height: 21px;
+
+  border-radius: 50%;
+
+  background: var(--brand);
+
+  color: white;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: .75rem;
+
+  margin-top: 2px;
+}
+
+/* =========================
+   GENERAL SECTIONS
+========================= */
+
+.section {
+  padding: 82px 0;
+}
+
+.section-head {
+  max-width: 720px;
+
+  margin-bottom: 40px;
+}
+
+.section-head h2 {
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3rem
+    );
+
+  line-height: 1.08;
+
+  letter-spacing: -.04em;
+
+  margin: 10px 0 12px;
+}
+
+.section-head p {
+  color: var(--muted);
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.service {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  transition: .2s ease;
+}
+
+.service:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow);
+}
+
+.icon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 11px;
+
+  background: var(--surface-2);
+
+  color: var(--brand);
+
+  font-weight: 900;
+
+  margin-bottom: 18px;
+}
+
+.service h3 {
+  margin: 0 0 8px;
+
+  font-size: 1.12rem;
+}
+
+.service p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: .94rem;
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid {
+  display: grid;
+
+  grid-template-columns:
+    1.1fr .9fr;
+
+  gap: 18px;
+
+  align-items: stretch;
+}
+
+.about-card {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 26px;
+}
+
+.about-card p {
+  color: var(--muted);
+}
+
+.about-points {
+  display: grid;
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.about-point {
+  display: flex;
+
+  gap: 10px;
+
+  align-items: flex-start;
+}
+
+.about-point .check {
+  flex: 0 0 21px;
+}
+
+/* =========================
+   CTA BAND
+========================= */
+
+.band {
+  background: var(--brand-2);
+
+  color: white;
+
+  border-radius: 24px;
+
+  padding: 42px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.3fr .7fr;
+
+  gap: 30px;
+
+  align-items: center;
+}
+
+.band p {
+  color: rgba(255,255,255,.78);
+}
+
+.band .primary {
+  background: white;
+
+  color: #123d56;
+}
+
+/* =========================
+   CLIENTS
+========================= */
+
+.clients-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;   /* was center */
+  gap: 18px;
+}
+
+.clients-grid .client-card {
+  flex: 0 1 calc((100% - 54px) / 7);
+}
+
+.client-card {
+  min-height: 220px;
+
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  transition: .2s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow);
+}
+
+.client-logo {
+  width: 100px;
+  height: 100px;
+  background-color: #a9b5c7;
+  border-radius: 15px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: var(--surface-2);
+
+  color: var(--brand);
+
+  font-weight: 900;
+
+  font-size: 1.05rem;
+
+  margin-bottom: 14px;
+
+  overflow: hidden;
+}
+
+.client-logo img {
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  object-fit: contain;
+
+  padding: 8px;
+
+  display: block;
+}
+
+.client-card h3 {
+  margin: 0;
+
+  font-size: 1rem;
+}
+
+.client-card p {
+  margin: 5px 0 0;
+
+  color: var(--muted);
+
+  font-size: .82rem;
+}
+
+.client-site {
+  margin-top: 10px;
+
+  color: var(--brand);
+
+  font-size: .82rem;
+
+  font-weight: 800;
+}
+
+.client-site:hover {
+  text-decoration: underline;
+}
+
+.site-note {
+  color: var(--muted);
+
+  font-size: .75rem;
+
+  margin-top: 8px;
+}
+
+/* =========================
+   INDUSTRIES
+========================= */
+
+.industries-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 18px;
+}
+
+.industry {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 26px;
+
+  text-align: center;
+}
+
+.industry p {
+  color: var(--muted);
+}
+
+.industry .icon {
+  margin:
+    0 auto 14px;
+}
+
+/* =========================
+   TESTIMONIALS
+========================= */
+
+.testimonial-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.testimonial {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  padding: 26px;
+}
+
+.quote {
+  font-size: 1.05rem;
+
+  line-height: 1.7;
+
+  margin: 0 0 18px;
+}
+
+.testimonial strong {
+  display: block;
+}
+
+.testimonial span {
+  color: var(--muted);
+
+  font-size: .82rem;
+}
+
+/* =========================
+   FREE DEEDS
+========================= */
+
+.free-deeds {
+  background:
+    linear-gradient(
+      135deg,
+      var(--surface),
+      var(--surface-2)
+    );
+
+  border: 1px solid var(--border);
+
+  border-radius: 24px;
+
+  padding: 34px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.1fr .9fr;
+
+  gap: 30px;
+
+  align-items: center;
+}
+
+.free-deeds-list {
+  display: grid;
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.free-deed {
+  display: flex;
+
+  gap: 12px;
+
+  align-items: flex-start;
+}
+
+.free-deed .icon {
+  flex: 0 0 42px;
+
+  margin: 0;
+}
+
+/* =========================
+   PROCESS
+========================= */
+
+.steps {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 16px;
+}
+
+.step {
+  padding: 22px;
+
+  border: 1px solid var(--border);
+
+  background: var(--surface);
+
+  border-radius: 16px;
+}
+
+.number {
+  font-size: .76rem;
+
+  font-weight: 900;
+
+  color: var(--accent);
+
+  letter-spacing: .1em;
+}
+
+.step h3 {
+  margin: 9px 0 7px;
+}
+
+.step p {
+  color: var(--muted);
+
+  font-size: .9rem;
+
+  margin: 0;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq {
+  display: grid;
+
+  gap: 10px;
+
+  max-width: 850px;
+}
+
+details {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 12px;
+
+  padding: 16px 18px;
+}
+
+summary {
+  cursor: pointer;
+
+  font-weight: 750;
+}
+
+details p {
+  color: var(--muted);
+
+  margin: 12px 0 0;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+  display: grid;
+
+  grid-template-columns:
+    .85fr 1.15fr;
+
+  gap: 30px;
+
+  align-items: start;
+}
+
+.contact-panel,
+form {
+  background: var(--surface);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  padding: 28px;
+}
+
+.contact-list {
+  display: grid;
+
+  gap: 14px;
+
+  margin-top: 22px;
+}
+
+.contact-item {
+  display: flex;
+
+  gap: 12px;
+}
+
+.contact-item strong {
+  display: block;
+}
+
+.contact-item span {
+  color: var(--muted);
+
+  font-size: .92rem;
+}
+
+.contact-actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+.contact-actions a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.map-box {
+  margin-top: 24px;
+
+  padding: 18px;
+
+  border: 1px dashed var(--border);
+
+  border-radius: 16px;
+
+  background: var(--surface-2);
+}
+
+.map-box a {
+  color: var(--brand);
+
+  font-weight: 800;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-grid {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+
+  gap: 7px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: .84rem;
+
+  font-weight: 750;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+
+  border: 1px solid var(--border);
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  border-radius: 10px;
+
+  padding: 11px 12px;
+
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--brand) 14%,
+      transparent
+    );
+}
+
+textarea {
+  min-height: 130px;
+
+  resize: vertical;
+}
+
+.consent {
+  display: flex;
+
+  gap: 9px;
+
+  align-items: flex-start;
+
+  font-size: .82rem;
+
+  color: var(--muted);
+}
+
+.consent input {
+  width: auto;
+
+  margin-top: 4px;
+}
+
+.form-note {
+  font-size: .8rem;
+
+  color: var(--muted);
+
+  margin: 12px 0 0;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  border-top: 1px solid var(--border);
+
+  padding: 30px 0;
+
+  color: var(--muted);
+
+  font-size: .88rem;
+}
+
+.footer-inner {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+  position: fixed;
+
+  right: 20px;
+
+  bottom: 20px;
+
+  background: var(--text);
+
+  color: var(--bg);
+
+  padding: 14px 17px;
+
+  border-radius: 11px;
+
+  box-shadow: var(--shadow);
+
+  opacity: 0;
+
+  transform: translateY(10px);
+
+  pointer-events: none;
+
+  transition: .2s;
+
+  z-index: 50;
+}
+
+.toast.show {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+
+  .nav-links {
+    display: none;
+
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+
+    top: 72px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+
+    padding: 14px;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    box-shadow: var(--shadow);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .nav-cta {
+    display: none;
+  }
+
+  .hero-grid,
+  .contact,
+  .band {
+    grid-template-columns: 1fr;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .free-deeds {
+    grid-template-columns: 1fr;
+  }
+
+  .services {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .clients-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .industries-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .steps {
+    grid-template-columns:
+      1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+
+  .container {
+    width:
+      min(
+        100% - 28px,
+        1160px
+      );
+  }
+
+  .hero {
+    padding-top: 58px;
+  }
+
+  .services,
+  .steps,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clients-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .industries-grid {
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .field.full {
+    grid-column: auto;
+  }
+
+  .band {
+    padding: 28px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav class="nav">
+
+  <div class="container nav-inner">
+
+    <a href="#home" class="brand">
+
+      <span class="logo">
+        <img src="/MVCLogo.png" alt="MVC Bookkeeping & Accounting Services logo">
+      </span>
+
+      <span>
+        MVC <h6 style="display:inline-block; font-size:0.8rem; margin:0 0 0 4px;">Bookkeeping & Accounting Services</h6>
+      </span>
+
+    </a>
+
+    <button
+      class="menu"
+      id="menuBtn"
+      aria-label="Open menu"
+    >
+      ☰
+    </button>
+
+    <div
+      class="nav-links"
+      id="navLinks"
+    >
+
+      <a href="#services">
+        Services
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#clients">
+        Clients
+      </a>
+
+      <a href="#industries">
+        Industries
+      </a>
+
+      <a href="#free-deeds">
+        Free Deeds
+      </a>
+
+      <a href="#testimonials">
+        Testimonials
+      </a>
+
+      <a href="#process">
+        How It Works
+      </a>
+
+      <a href="#faq">
+        FAQ
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+    </div>
+
+    <a
+      class="nav-cta"
+      href="#contact"
+    >
+      Book a Consultation
+    </a>
+
+  </div>
+
+</nav>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main>
+
+
+<!-- HERO -->
+
+<section
+  class="hero"
+  id="home"
+>
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <span class="eyebrow">
+        Bookkeeping • Accounting • Compliance
+      </span>
+
+      <h1>
+        Stay compliant.
+        Stay organized.
+        Focus on your business.
+      </h1>
+
+      <p>
+        MVC Bookkeeping &amp; Accounting Services helps
+        Philippine businesses keep their books, tax filings,
+        registrations, and compliance requirements on track —
+        so owners can spend more time running the business.
+      </p>
+
+      <div class="actions">
+
+        <a
+          class="primary"
+          href="#contact"
+        >
+          Request Assistance
+        </a>
+
+        <a
+          class="secondary"
+          href="#services"
+        >
+          Explore Services
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+      <div class="card-top">
+
+        <strong>
+          Compliance at a glance
+        </strong>
+
+        <span class="status">
+          Organized
+        </span>
+
+      </div>
+
+      <div class="metric">
+        One trusted partner
+      </div>
+
+      <div class="muted">
+        for recurring compliance,
+        records, and business support.
+      </div>
+
+      <ul class="check-list">
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Monthly, quarterly &amp; annual
+            tax compliance
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            BIR registration, updates &amp;
+            closure support
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            SEC / eAFS submission coordination
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Payroll and business records support
+          </span>
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section
+  class="section"
+  id="services"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        What we do
+      </span>
+
+      <h2>
+        Practical compliance support
+        for growing businesses.
+      </h2>
+
+      <p>
+        From routine bookkeeping to government
+        transactions, our services are designed to
+        make recurring requirements easier to manage.
+      </p>
+
+    </div>
+
+
+    <div class="services">
+
+      <article class="service">
+
+        <div class="icon">
+          01
+        </div>
+
+        <h3>
+          Bookkeeping &amp; Accounting
+        </h3>
+
+        <p>
+          Organized recording and monitoring of
+          business transactions, supporting documents,
+          and financial records.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          02
+        </div>
+
+        <h3>
+          BIR Tax Compliance
+        </h3>
+
+        <p>
+          Assistance with monthly, quarterly,
+          and annual BIR filing requirements,
+          schedules, and supporting documents.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          03
+        </div>
+
+        <h3>
+          Business Registration
+        </h3>
+
+        <p>
+          Support for business registration,
+          updates, transfers, closure,
+          and related government transactions.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          04
+        </div>
+
+        <h3>
+          SEC &amp; eAFS Compliance
+        </h3>
+
+        <p>
+          Coordination of annual financial statement,
+          eAFS, SEC submission, and related
+          corporate compliance requirements.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          05
+        </div>
+
+        <h3>
+          Payroll Support
+        </h3>
+
+        <p>
+          Payroll records and statutory contribution
+          documentation for SSS, PhilHealth,
+          and Pag-IBIG requirements.
+        </p>
+
+      </article>
+
+
+      <article class="service">
+
+        <div class="icon">
+          06
+        </div>
+
+        <h3>
+          Business Compliance Support
+        </h3>
+
+        <p>
+          Practical assistance for permits,
+          tax clearances, open cases, certificates,
+          letters, and other compliance needs.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section
+  class="section"
+  id="about"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        About MVC
+      </span>
+
+      <h2>
+        Reliable compliance support,
+        built around your business.
+      </h2>
+
+      <p>
+        MVC Bookkeeping &amp; Accounting Services
+        helps business owners stay organized with
+        practical accounting, tax, registration,
+        and compliance support.
+      </p>
+
+    </div>
+
+
+    <div class="about-grid">
+
+      <div class="about-card">
+
+        <h3>
+          More than filing deadlines.
+        </h3>
+
+        <p>
+          Our approach is focused on clear requirements,
+          organized records, timely follow-ups, and a
+          reliable compliance process that business
+          owners can understand and maintain.
+        </p>
+
+        <div class="about-points">
+
+          <div class="about-point">
+            <span class="check">✓</span>
+            <span>
+              Practical bookkeeping and accounting support
+            </span>
+          </div>
+
+          <div class="about-point">
+            <span class="check">✓</span>
+            <span>
+              Monthly, quarterly, and annual
+              compliance monitoring
+            </span>
+          </div>
+
+          <div class="about-point">
+            <span class="check">✓</span>
+            <span>
+              Assistance with BIR, SEC, eAFS,
+              and registration transactions
+            </span>
+          </div>
+
+          <div class="about-point">
+            <span class="check">✓</span>
+            <span>
+              Document-focused and
+              business-owner friendly process
+            </span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="about-card">
+
+        <span class="eyebrow">
+          Our approach
+        </span>
+
+        <h3>
+          Clear. Organized. Responsive.
+        </h3>
+
+        <p>
+          We help turn recurring compliance
+          requirements into a manageable process —
+          from collecting documents to monitoring
+          deadlines and keeping proof of submission.
+        </p>
+
+        <div class="metric">
+          One process.
+        </div>
+
+        <div class="muted">
+          Better visibility over your
+          business compliance.
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section
+  class="section"
+  style="padding-top:0;"
+>
+
+  <div class="container">
+
+    <div class="band">
+
+      <div>
+
+        <span
+          class="eyebrow"
+          style="color:#fff"
+        >
+          Built for business owners
+        </span>
+
+        <h2
+          style="
+            margin:12px 0 8px;
+            font-size:2rem;
+            letter-spacing:-.03em;
+          "
+        >
+          Don't let compliance become
+          a last-minute problem.
+        </h2>
+
+        <p>
+          Set up a clear process for documents,
+          deadlines, filings, and follow-ups.
+        </p>
+
+      </div>
+
+      <div>
+
+        <a
+          class="primary"
+          href="#contact"
+        >
+          Talk to MVC
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CLIENTS -->
+
+<section
+  class="section"
+  id="clients"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Our Top 6 clients
+      </span>
+
+      <h2>
+        Businesses we've had
+        the opportunity to support.
+      </h2>
+
+    </div>
+
+
+    <div class="clients-grid">
+
+
+      <!-- CLIENT 1 -->
+
+      <article class="client-card">
+
+        <div class="client-logo">
+
+            <img
+              src="https://servicepartnersinc.com/wp-content/uploads/2022/09/spi-logo.svg"
+              alt="ABC Company Logo"
+            >
+        </div>
+
+        <h3>
+          Service Partners INC
+        </h3>
+
+        <a
+          class="client-site"
+          href="https://servicepartnersinc.com/"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article>
+
+
+      <!-- CLIENT 2 -->
+
+      <article class="client-card">
+
+        <div class="client-logo">
+            <img
+              src="https://www.hospeco.ph/wp-content/uploads/2026/10/Hospeco-Icon-300x300-1.webp"
+              alt="Hospeco Logo"
+            >
+        </div>
+
+        <h3>
+          HOSPECO
+        </h3>
+
+        <a
+          class="client-site"
+          href="https://hospeco.ph/"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article>
+
+
+      <!-- CLIENT 3 -->
+
+      <article class="client-card">
+
+        <div class="client-logo">
+          <img
+            src="https://www.zlin.ph/wp-content/themes/frontier/img/logo.png"
+            alt="ZLIN Equipment Philippines Inc. Logo"
+          >
+        </div>
+
+        <h3>
+          ZLIN EQUIPMENT PHILIPPINES INC.
+        </h3>
+
+        <a
+          class="client-site"
+          href="https://www.zlin.ph/"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article>
+
+
+      <!-- CLIENT 4 -->
+
+      <article class="client-card">
+
+        <div class="client-logo">
+          <img
+            src="https://www.cleanfuel.ph/wp-content/uploads/2022/02/new-logo3-06-border_1080.png"
+            alt="PENTACLEAN FUEL CORPORATION Logo"
+          >
+        </div>
+
+        <h3>
+          PENTACLEAN FUEL CORPORATION
+        </h3>
+
+        <a
+          class="client-site"
+          href="https://www.cleanfuel.ph/"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article>
+
+
+      <!-- CLIENT 5 -->
+
+      <article class="client-card">
+
+        <div class="client-logo">
+          <img
+            src="https://cdn.prod.website-files.com/60d7375fa207467eeb4fdeee/645899dba97931b9621680de_Xperto_horizontal_colored.svg"
+            alt="WAYVENT INNOVATIONS INC Logo"
+          >
+        </div>
+
+        <h3>
+          WAYVENT INNOVATIONS INC
+        </h3>
+
+        <a
+          class="client-site"
+          href="https://www.xperto.ph/"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article>
+
+
+      <!-- CLIENT 6 -->
+
+      <article class="client-card">
+
+        <div class="client-logo">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPIvwNobJYqw8iYQtNjqc30ijQsmn6TGTlz9_S915kTfsLOJb32Ue2j0YW&s=10"
+            alt="EUROLINE BUSINESS SOLUTIONS AND SECURITY SERVICES INC Logo"
+          >
+        </div>
+
+        <h3>
+          EUROLINE BUSINESS SOLUTIONS AND SECURITY SERVICES INC
+        </h3>
+
+        <a
+          class="client-site"
+          href="https://www.euroline.ph/"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article>
+
+
+      <!-- CLIENT 7 -->
+
+      <!-- <article class="client-card">
+
+        <div class="client-logo">
+          <span>07</span>
+        </div>
+
+        <h3>
+          Client Name
+        </h3>
+
+        <p>
+          Industry / Business Type
+        </p>
+
+        <a
+          class="client-site"
+          href="https://example.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article> -->
+
+
+      <!-- CLIENT 8 -->
+<!-- 
+      <article class="client-card">
+
+        <div class="client-logo">
+          <span>08</span>
+        </div>
+
+        <h3>
+          Client Name
+        </h3>
+
+        <p>
+          Industry / Business Type
+        </p>
+
+        <a
+          class="client-site"
+          href="https://example.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Visit Website →
+        </a>
+
+      </article> -->
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- INDUSTRIES -->
+
+<section
+  class="section"
+  id="industries"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Industries We Serve
+      </span>
+
+      <h2>
+        Compliance support across
+        different types of businesses.
+      </h2>
+
+      <p>
+        Our services can be tailored to the records,
+        filings, and recurring requirements of
+        different business models.
+      </p>
+
+    </div>
+
+
+    <div class="industries-grid">
+
+
+      <article class="industry">
+
+        <div class="icon">
+          01
+        </div>
+
+        <h3>
+          Retail &amp; Trading
+        </h3>
+
+        <p>
+          Sales, purchases, inventory,
+          VAT, and recurring tax compliance.
+        </p>
+
+      </article>
+
+
+      <article class="industry">
+
+        <div class="icon">
+          02
+        </div>
+
+        <h3>
+          Professional Services
+        </h3>
+
+        <p>
+          Accounting and compliance support
+          for consultants, agencies,
+          and service providers.
+        </p>
+
+      </article>
+
+
+      <article class="industry">
+
+        <div class="icon">
+          03
+        </div>
+
+        <h3>
+          Construction
+        </h3>
+
+        <p>
+          Business records, tax compliance,
+          payroll, and government documentation.
+        </p>
+
+      </article>
+
+
+      <article class="industry">
+
+        <div class="icon">
+          04
+        </div>
+
+        <h3>
+          Food &amp; Hospitality
+        </h3>
+
+        <p>
+          Bookkeeping, payroll, permits,
+          and recurring compliance requirements.
+        </p>
+
+      </article>
+
+
+      <article class="industry">
+
+        <div class="icon">
+          05
+        </div>
+
+        <h3>
+          E-Commerce
+        </h3>
+
+        <p>
+          Transaction records, sales documentation,
+          and tax compliance support.
+        </p>
+
+      </article>
+
+
+      <article class="industry">
+
+        <div class="icon">
+          06
+        </div>
+
+        <h3>
+          Real Estate
+        </h3>
+
+        <p>
+          Records and compliance support for
+          leasing and property-related businesses.
+        </p>
+
+      </article>
+
+
+      <article class="industry">
+
+        <div class="icon">
+          07
+        </div>
+
+        <h3>
+          Corporations &amp; OPCs
+        </h3>
+
+        <p>
+          SEC, eAFS, annual compliance,
+          bookkeeping, and tax requirements.
+        </p>
+
+      </article>
+
+
+      <article class="industry">
+
+        <div class="icon">
+          08
+        </div>
+
+        <h3>
+          Startups &amp; SMEs
+        </h3>
+
+        <p>
+          Registration, bookkeeping,
+          compliance setup, and ongoing support.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- TESTIMONIALS -->
+
+<section
+  class="section"
+  id="testimonials"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Testimonials
+      </span>
+
+      <h2>
+        What our clients say.
+      </h2>
+
+      <p>
+        Replace these sample testimonials with
+        approved client feedback before publishing.
+      </p>
+
+    </div>
+
+
+    <div class="testimonial-grid">
+
+
+      <article class="testimonial">
+
+        <p class="quote">
+          “MVC helped us keep our compliance
+          requirements organized and easier to monitor.”
+        </p>
+
+        <strong>
+          Client Name
+        </strong>
+
+        <span>
+          Business Owner
+        </span>
+
+      </article>
+
+
+      <article class="testimonial">
+
+        <p class="quote">
+          “The process is clear, responsive,
+          and convenient, especially when
+          deadlines are approaching.”
+        </p>
+
+        <strong>
+          Client Name
+        </strong>
+
+        <span>
+          Company Representative
+        </span>
+
+      </article>
+
+
+      <article class="testimonial">
+
+        <p class="quote">
+          “Having one team coordinate our
+          accounting and compliance needs gives
+          us better peace of mind.”
+        </p>
+
+        <strong>
+          Client Name
+        </strong>
+
+        <span>
+          Business Owner
+        </span>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FREE DEEDS -->
+
+<section
+  class="section"
+  id="free-deeds"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Our Free Deeds
+      </span>
+
+      <h2>
+        Giving back through
+        practical support.
+      </h2>
+
+      <p>
+        We believe professional knowledge can also
+        be a way to serve the community. MVC offers
+        selected free services and educational assistance
+        as part of our commitment to giving back.
+      </p>
+
+    </div>
+
+
+    <div class="free-deeds">
+
+
+      <div>
+
+        <h3>
+          Free community assistance
+        </h3>
+
+        <p class="muted">
+          This section can highlight the free services,
+          outreach activities, consultations, or learning
+          resources that MVC provides to individuals,
+          aspiring entrepreneurs, and community organizations.
+        </p>
+
+
+        <div class="free-deeds-list">
+
+
+          <div class="free-deed">
+
+            <div class="icon">
+              01
+            </div>
+
+            <div>
+
+              <strong>
+                Free Basic Compliance Guidance
+              </strong>
+
+              <div class="muted">
+                General guidance for individuals
+                and small entrepreneurs starting
+                to understand their compliance responsibilities.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="free-deed">
+
+            <div class="icon">
+              02
+            </div>
+
+            <div>
+
+              <strong>
+                Free Educational Sessions
+              </strong>
+
+              <div class="muted">
+                Selected talks, orientations,
+                or learning materials about bookkeeping,
+                registration, and tax compliance.
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="free-deed">
+
+            <div class="icon">
+              03
+            </div>
+
+            <div>
+
+              <strong>
+                Community Support
+              </strong>
+
+              <div class="muted">
+                Volunteer assistance for qualified
+                community initiatives, student activities,
+                and small organizations.
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+
+      <div class="about-card">
+
+        <span class="eyebrow">
+          Our commitment
+        </span>
+
+        <h3>
+          Knowledge should create opportunities.
+        </h3>
+
+        <p>
+          We aim to make basic business and compliance
+          information more accessible, especially to people
+          who are taking their first steps toward
+          responsible entrepreneurship.
+        </p>
+
+        <a
+          class="primary"
+          href="#contact"
+        >
+          Ask About Free Services
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PROCESS -->
+
+<section
+  class="section"
+  id="process"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        How it works
+      </span>
+
+      <h2>
+        A straightforward process.
+      </h2>
+
+      <p>
+        Clear requirements, organized documents,
+        and timely follow-through.
+      </p>
+
+    </div>
+
+
+    <div class="steps">
+
+
+      <article class="step">
+
+        <div class="number">
+          STEP 01
+        </div>
+
+        <h3>
+          Tell us what you need
+        </h3>
+
+        <p>
+          Share your business details and the
+          compliance or accounting requirement
+          you need help with.
+        </p>
+
+      </article>
+
+
+      <article class="step">
+
+        <div class="number">
+          STEP 02
+        </div>
+
+        <h3>
+          Submit documents
+        </h3>
+
+        <p>
+          We identify the required documents
+          and guide you on what to provide and when.
+        </p>
+
+      </article>
+
+
+      <article class="step">
+
+        <div class="number">
+          STEP 03
+        </div>
+
+        <h3>
+          Process &amp; monitor
+        </h3>
+
+        <p>
+          We coordinate applicable filings,
+          submissions, follow-ups,
+          and compliance tracking.
+        </p>
+
+      </article>
+
+
+      <article class="step">
+
+        <div class="number">
+          STEP 04
+        </div>
+
+        <h3>
+          Keep your records
+        </h3>
+
+        <p>
+          Receive confirmations and maintain
+          an organized trail for your business records.
+        </p>
+
+      </article>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section
+  class="section"
+  id="faq"
+  style="padding-top:20px;"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Frequently asked
+      </span>
+
+      <h2>
+        Questions before getting started.
+      </h2>
+
+    </div>
+
+
+    <div class="faq">
+
+
+      <details>
+
+        <summary>
+          Can MVC assist with recurring BIR compliance?
+        </summary>
+
+        <p>
+          Yes. MVC can help organize recurring
+          monthly, quarterly, and annual requirements
+          and coordinate the submission process based
+          on your business registration and applicable
+          tax obligations.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          Can you help with business registration or updates?
+        </summary>
+
+        <p>
+          Yes. Assistance can cover registration-related
+          requirements and selected updates or government
+          transactions. Specific requirements depend on
+          the taxpayer and transaction.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          What documents should I prepare?
+        </summary>
+
+        <p>
+          Requirements vary by service. Common items
+          may include sales, purchases and expenses records,
+          payroll reports, registration documents, prior filings,
+          and other supporting documents.
+        </p>
+
+      </details>
+
+
+      <details>
+
+        <summary>
+          How do I request a quotation?
+        </summary>
+
+        <p>
+          Use the inquiry form below and describe the
+          service you need. MVC can then review the
+          request and advise on the appropriate next steps.
+        </p>
+
+      </details>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section
+  class="section"
+  id="contact"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <span class="eyebrow">
+        Let's work together
+      </span>
+
+      <h2>
+        Tell us what you need help with.
+      </h2>
+
+      <p>
+        Send an inquiry and we'll have the
+        right information to start the conversation.
+      </p>
+
+    </div>
+
+
+    <div class="contact">
+
+
+      <!-- CONTACT DETAILS -->
+
+      <div class="contact-panel">
+
+        <h3>
+          MVC Bookkeeping &amp;
+          Accounting Services
+        </h3>
+
+        <p class="muted">
+          Professional bookkeeping, accounting,
+          tax compliance, and business support
+          for Philippine businesses.
+        </p>
+
+
+        <div class="contact-list">
+
+
+          <div class="contact-item">
+
+            <div class="icon">
+              ✉
+            </div>
+
+            <div>
+
+              <strong>
+                Email
+              </strong>
+
+              <span>
+                mvcconsultancyserv@gmail.com
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="icon">
+              ☎
+            </div>
+
+            <div>
+
+              <strong>
+                Phone / Viber
+              </strong>
+
+              <span>
+                09989910728
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <div class="icon">
+              ⌖
+            </div>
+
+            <div>
+
+              <strong>
+                Service Area
+              </strong>
+
+              <span>
+                Philippines
+              </span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+        <div class="contact-actions">
+
+
+          <a
+            class="primary"
+            href="mailto:mvcconsultancyserv@gmail.com?subject=MVC%20Website%20Inquiry"
+          >
+            ✉ Email MVC
+          </a>
+
+
+          <a
+            class="secondary"
+            href="https://www.viber.com/"
+            target="_blank"
+            rel="noopener"
+          >
+            ☎ Open Viber
+          </a>
+
+
+        </div>
+
+
+        <div class="map-box">
+
+          <strong>
+            Find MVC
+          </strong>
+
+          <p class="muted">
+            Open Google Maps to view or search
+            for the MVC office location.
+          </p>
+
+          <a
+            href="https://www.google.com/maps/place/MVC+Bookkeeping+%26+Accounting+Services/@14.7180523,120.989734,17z/data=!3m1!4b1!4m6!3m5!1s0x3397b10030eb5ef3:0x80daa1fa8343153d!8m2!3d14.7180523!4d120.989734!16s%2Fg%2F11nk8p8cg3!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
+            target="_blank"
+            rel="noopener"
+          >
+            Open Google Maps →
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- INQUIRY FORM -->
+
+      <form id="inquiryForm">
+
+        <div class="form-grid">
+
+
+          <div class="field">
+
+            <label for="name">
+              Name *
+            </label>
+
+            <input
+              id="name"
+              name="name"
+              required
+              placeholder="Your name"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="company">
+              Business / Company
+            </label>
+
+            <input
+              id="company"
+              name="company"
+              placeholder="Business name"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="email">
+              Email *
+            </label>
+
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="you@example.com"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="contactNumber">
+              Contact Number
+            </label>
+
+            <input
+              id="contactNumber"
+              name="contactNumber"
+              placeholder="09XXXXXXXXX"
+            >
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="service">
+              Service needed *
+            </label>
+
+            <select
+              id="service"
+              name="service"
+              required
+            >
+
+              <option value="">
+                Select a service
+              </option>
+
+              <option>
+                Bookkeeping &amp; Accounting
+              </option>
+
+              <option>
+                BIR Tax Compliance
+              </option>
+
+              <option>
+                Business Registration
+              </option>
+
+              <option>
+                SEC / eAFS Compliance
+              </option>
+
+              <option>
+                Payroll Support
+              </option>
+
+              <option>
+                Business Permit Assistance
+              </option>
+
+              <option>
+                Tax Clearance / Open Cases
+              </option>
+
+              <option>
+                Other Compliance Assistance
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field">
+
+            <label for="preferredContact">
+              Preferred Contact
+            </label>
+
+            <select
+              id="preferredContact"
+              name="preferredContact"
+            >
+
+              <option>
+                Email
+              </option>
+
+              <option>
+                Phone
+              </option>
+
+              <option>
+                Viber
+              </option>
+
+              <option>
+                Messenger
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label for="message">
+              How can we help? *
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              required
+              placeholder="Briefly describe your concern or requirement."
+            ></textarea>
+
+          </div>
+
+
+          <div class="field full">
+
+            <label class="consent">
+
+              <input
+                type="checkbox"
+                id="consent"
+                name="consent"
+                required
+              >
+
+              <span>
+                I agree that MVC Bookkeeping &amp;
+                Accounting Services may use the
+                information I provide to respond
+                to this inquiry.
+              </span>
+
+            </label>
+
+          </div>
+
+
+          <div class="field full">
+
+            <button
+              class="primary"
+              type="submit"
+            >
+              Send Inquiry
+            </button>
+
+            <p class="form-note">
+              Your inquiry is sent directly to MVC. We'll get back to you through your preferred contact method.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </form>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container footer-inner">
+
+    <div>
+
+      ©
+      <span id="year"></span>
+
+      MVC Bookkeeping &amp;
+      Accounting Services.
+
+      All rights reserved.
+
+    </div>
+
+    <div>
+      Bookkeeping • Accounting • Tax Compliance
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  Your email app is opening
+  with your inquiry.
+</div>
+
+
+</div>
+
+
+<script>
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+const menuBtn =
+  document.getElementById(
+    'menuBtn'
+  );
+
+const navLinks =
+  document.getElementById(
+    'navLinks'
+  );
+
+menuBtn.addEventListener(
+  'click',
+  () => {
+
+    navLinks.classList.toggle(
+      'open'
+    );
+
+  }
+);
+
+
+document
+  .querySelectorAll(
+    '#navLinks a'
+  )
+  .forEach(
+    a => {
+
+      a.addEventListener(
+        'click',
+        () => {
+
+          navLinks.classList.remove(
+            'open'
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =========================
+   CURRENT YEAR
+========================= */
+
+document
+  .getElementById('year')
+  .textContent =
+  new Date().getFullYear();
+
+
+/* =========================
+   INQUIRY FORM
+========================= */
+
+const inquiryForm = document.getElementById('inquiryForm');
+const toast = document.getElementById('toast');
+
+/* Paste your Zapier "Catch Hook" webhook URL here */
+const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/27820882/4mq5gc2/';
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 5000);
+}
+
+inquiryForm.addEventListener('submit', async function (event) {
+  event.preventDefault();
+
+  const data = new FormData(inquiryForm);
+  const submitBtn = inquiryForm.querySelector('button[type="submit"]');
+
+  const payload = {
+    name: data.get('name') || '',
+    company: data.get('company') || 'N/A',
+    email: data.get('email') || '',
+    contactNumber: data.get('contactNumber') || 'N/A',
+    service: data.get('service') || '',
+    preferredContact: data.get('preferredContact') || 'Email',
+    message: data.get('message') || '',
+    source: 'MVC website',
+    submittedAt: new Date().toISOString()
+  };
+
+  /* Fallback: open Gmail draft if the webhook isn't set up yet */
+  if (ZAPIER_WEBHOOK_URL.indexOf('PASTE_') === 0) {
+    const subject = encodeURIComponent('Website Inquiry - MVC Bookkeeping & Accounting Services');
+    const body = encodeURIComponent(
+      'NEW WEBSITE INQUIRY\n\n' +
+      'Name: ' + payload.name + '\n' +
+      'Business / Company: ' + payload.company + '\n' +
+      'Email: ' + payload.email + '\n' +
+      'Contact Number: ' + payload.contactNumber + '\n' +
+      'Service Needed: ' + payload.service + '\n' +
+      'Preferred Contact: ' + payload.preferredContact + '\n\n' +
+      'Message:\n' + payload.message + '\n\n' +
+      'Sent through the MVC website.'
+    );
+    window.open(
+      'https://mail.google.com/mail/?view=cm&fs=1&to=compliance.mvc@gmail.com&su=' + subject + '&body=' + body,
+      '_blank'
+    );
+    showToast('Your inquiry is ready to send in Gmail.');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  const originalLabel = submitBtn.textContent;
+  submitBtn.textContent = 'Sending...';
+
+  try {
+    /* Zapier webhooks don't send CORS headers, so use no-cors with a
+       form-encoded body (a "simple" request). The response is opaque,
+       so we treat a completed request as sent. */
+    await fetch(ZAPIER_WEBHOOK_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: new URLSearchParams(payload)
+    });
+
+    inquiryForm.reset();
+    showToast('Thank you! Your inquiry has been sent.');
+  } catch (err) {
+    console.error('Zapier webhook error:', err);
+    showToast('Something went wrong. Please email compliance.mvc@gmail.com.');
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalLabel;
+  }
+});
+
+</script>
+
+</body>
+</html>
