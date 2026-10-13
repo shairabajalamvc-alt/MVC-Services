@@ -8,6 +8,18 @@
 content="MVC Bookkeeping & Accounting Services — practical bookkeeping, accounting, BIR tax compliance, business registration, SEC compliance, payroll, and business support for Philippine businesses.">
 
 <title>MVC Bookkeeping & Accounting Services</title>
+<link rel="icon" type="image/png" href="/MVCLogo.png">
+
+<!-- Link preview (Viber, Facebook, Messenger, WhatsApp, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MVC Bookkeeping & Accounting Services">
+<meta property="og:title" content="MVC Bookkeeping & Accounting Services">
+<meta property="og:description" content="Practical bookkeeping, accounting, BIR tax compliance, business registration, SEC compliance, payroll, and business support for Philippine businesses.">
+<meta property="og:url" content="https://mvc-services.vercel.app/">
+<meta property="og:image" content="https://mvc-services.vercel.app/MVCLogo.png">
+<meta property="og:image:alt" content="MVC Bookkeeping & Accounting Services logo">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mvc-services.vercel.app/MVCLogo.png">
 
 <style>
 :root {
@@ -164,6 +176,16 @@ a {
   box-shadow:
     0 8px 18px
     rgba(11,92,102,.18);
+}
+
+.nav-cta {
+  align-self: center;   /* stops it stretching to the nav's full height */
+  height: auto;
+  padding: 9px 16px;
+  font-size: .88rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-cta:hover,
@@ -582,8 +604,13 @@ h1 {
 
 .band .primary {
   background: white;
+  font-size: 150%;
 
   color: #123d56;
+}
+
+.band .primary:hover {
+  background: #f0f0f0;
 }
 
 /* =========================
@@ -599,7 +626,7 @@ h1 {
 }
 
 .clients-grid .client-card {
-  flex: 0 1 calc((100% - 54px) / 7);
+  flex: 0 1 calc((100% - 54px) / 4);
 }
 
 .client-card {
@@ -716,24 +743,44 @@ h1 {
 }
 
 .industry {
-  background: var(--surface);
-
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   border: 1px solid var(--border);
-
   border-radius: 18px;
-
   padding: 26px;
-
   text-align: center;
+
+  background-color: #0b1220;                 /* same in light and dark mode */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-blend-mode: normal !important;  /* overrides the inline "overlay" */
+}
+
+/* dark overlay, so the photo is visible and the text readable in both modes */
+.industry::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    rgba(11, 18, 32, .55),
+    rgba(11, 18, 32, .75)
+  );
+}
+
+.industry h3 {
+  color: #fff;
 }
 
 .industry p {
-  color: var(--muted);
+  color: rgba(255, 255, 255, .88);
 }
 
 .industry .icon {
-  margin:
-    0 auto 14px;
+  margin: 0 auto 14px;
+  background: rgba(255, 255, 255, .16);
+  color: #fff;
 }
 
 /* =========================
@@ -1266,6 +1313,7 @@ footer {
   .band {
     padding: 28px;
   }
+  
 }
 </style>
 </head>
@@ -1289,7 +1337,7 @@ footer {
       </span>
 
       <span>
-        MVC <h6 style="display:inline-block; font-size:0.8rem; margin:0 0 0 4px;">Bookkeeping & Accounting Services</h6>
+        MVC Bookkeeping & Accounting Services
       </span>
 
     </a>
@@ -1323,20 +1371,20 @@ footer {
         Industries
       </a>
 
-      <a href="#free-deeds">
+      <!-- <a href="#free-deeds">
         Free Deeds
-      </a>
+      </a> -->
 
-      <a href="#testimonials">
+      <!-- <a href="#testimonials">
         Testimonials
-      </a>
+      </a> -->
 
       <a href="#process">
         How It Works
       </a>
 
       <a href="#faq">
-        FAQ
+        FAQs
       </a>
 
       <a href="#contact">
@@ -1376,7 +1424,7 @@ footer {
     <div>
 
       <span class="eyebrow">
-        Bookkeeping • Accounting • Compliance
+        Business Registration • Bookkeeping • Accounting • Compliance
       </span>
 
       <h1>
@@ -1441,30 +1489,70 @@ footer {
         <li>
           <span class="check">✓</span>
           <span>
-            Monthly, quarterly &amp; annual
-            tax compliance
+            Business Registration (SEC/DTI, BIR, Mayor's Permit)
           </span>
         </li>
 
         <li>
           <span class="check">✓</span>
           <span>
-            BIR registration, updates &amp;
-            closure support
+            Bookkeeping & Accounting
           </span>
         </li>
 
         <li>
           <span class="check">✓</span>
           <span>
-            SEC / eAFS submission coordination
+            BIR Tax Compliance
           </span>
         </li>
 
         <li>
           <span class="check">✓</span>
           <span>
-            Payroll and business records support
+            Tax Audit
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Permits (Occupancy and Building)
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Property Related Services (Title Transfer, Land Conversion, Property Due Diligence)
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Import & Export Permit
+          </span>
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Accreditations (PCAB and PhilGEPS)
+          </span>
+        </li>
+
+        <!-- <li>
+          <span class="check">✓</span>
+          <span>
+            Mining & Quarrying
+          </span>
+        </li> -->
+
+        <li>
+          <span class="check">✓</span>
+          <span>
+            Other Services (Birth Certificate Registration, TIN Registration, Visa Processing, Bank Loan/Financial Assistance, Labor Contract Assessment)
           </span>
         </li>
 
@@ -1493,14 +1581,13 @@ footer {
       </span>
 
       <h2>
-        Practical compliance support
-        for growing businesses.
+        Reliable & Efficient Business Registration Process,
       </h2>
 
+      <h2>Practical compliance support for growing businesses.</h2>
+
       <p>
-        From routine bookkeeping to government
-        transactions, our services are designed to
-        make recurring requirements easier to manage.
+         We help businesses with fast, simple, and hassle-free registration from routine bookkeeping to government transactions, our services are designed to make recurring requirements easier to manage.
       </p>
 
     </div>
@@ -1515,13 +1602,11 @@ footer {
         </div>
 
         <h3>
-          Bookkeeping &amp; Accounting
+          Business Registration (SEC/DTI, BIR, Mayor's Permit)
         </h3>
 
         <p>
-          Organized recording and monitoring of
-          business transactions, supporting documents,
-          and financial records.
+          Support for business registration, updates, transfers, and other related government transactions.
         </p>
 
       </article>
@@ -1534,13 +1619,11 @@ footer {
         </div>
 
         <h3>
-          BIR Tax Compliance
+          Bookkeeping & Accounting
         </h3>
 
         <p>
-          Assistance with monthly, quarterly,
-          and annual BIR filing requirements,
-          schedules, and supporting documents.
+          Organized recording and monitoring of business transactions, supporting documents, and financial records.
         </p>
 
       </article>
@@ -1553,13 +1636,11 @@ footer {
         </div>
 
         <h3>
-          Business Registration
+          BIR Tax Compliance
         </h3>
 
         <p>
-          Support for business registration,
-          updates, transfers, closure,
-          and related government transactions.
+          Assistance with monthly, quarterly, and annual BIR filing requirements, schedules, and supporting documents.
         </p>
 
       </article>
@@ -1572,13 +1653,11 @@ footer {
         </div>
 
         <h3>
-          SEC &amp; eAFS Compliance
+          Tax Audit
         </h3>
 
         <p>
-          Coordination of annual financial statement,
-          eAFS, SEC submission, and related
-          corporate compliance requirements.
+          Assistance and support during BIR tax audits, assessments, and related proceedings, including document preparation, compliance review, coordination, and submission of required supporting documents.
         </p>
 
       </article>
@@ -1591,13 +1670,11 @@ footer {
         </div>
 
         <h3>
-          Payroll Support
+          Payroll & Statutory Processing
         </h3>
 
         <p>
-          Payroll records and statutory contribution
-          documentation for SSS, PhilHealth,
-          and Pag-IBIG requirements.
+          Payroll processing and statutory registration and monitoring compliance and payment for SSS, PhilHealth, and Pag-IBIG requirements.
         </p>
 
       </article>
@@ -1610,13 +1687,59 @@ footer {
         </div>
 
         <h3>
-          Business Compliance Support
+          Property Related Services
         </h3>
 
         <p>
-          Practical assistance for permits,
-          tax clearances, open cases, certificates,
-          letters, and other compliance needs.
+          Assistance with  government-related requirements involving properties, including title transfer/lost title, land conversion, property due diligence and other applicable property compliance matters.  
+        </p>
+
+      </article>
+
+      <article class="service">
+
+        <div class="icon">
+          07
+        </div>
+
+        <h3>
+          Import & Export Permit
+        </h3>
+
+        <p>
+          Assistance with the registration, application, renewal, and processing of permits and requirements necessary for businesses engaged in importation and exportation.
+        </p>
+
+      </article>
+
+      <article class="service">
+
+        <div class="icon">
+          08
+        </div>
+
+        <h3>
+          Accreditations
+        </h3>
+
+        <p>
+          Assistance with applications, renewals, and compliance requirements for government and industry accreditations, registrations, certifications, and related clearances for PhilGEPS and PCAB. 
+        </p>
+
+      </article>
+
+      <article class="service">
+
+        <div class="icon">
+          09
+        </div>
+
+        <h3>
+          Other Services
+        </h3>
+
+        <p>
+          Additional administrative and government compliance services tailored to your business needs, including birth certificate application, TIN Registration, VISA processing, Bank Loan/Financial Assistance, Labor Contract Assessment and other related compliance.
         </p>
 
       </article>
@@ -1640,27 +1763,19 @@ footer {
     <div class="section-head">
 
       <span class="eyebrow">
-        About MVC
+        <h2>About MVC</h2>
       </span>
 
       <h2>
-        Reliable compliance support,
-        built around your business.
+        Your Trusted Partner in Business Registration and Compliance
       </h2>
-
-      <p>
-        MVC Bookkeeping &amp; Accounting Services
-        helps business owners stay organized with
-        practical accounting, tax, registration,
-        and compliance support.
-      </p>
 
     </div>
 
 
     <div class="about-grid">
 
-      <div class="about-card">
+      <!-- <div class="about-card">
 
         <h3>
           More than filing deadlines.
@@ -1708,8 +1823,10 @@ footer {
 
         </div>
 
-      </div>
-
+      </div> -->
+      <p style="text-align: justify; font-size: 1.20rem; line-height: 1.6;">
+        We specialize in business registration and provide reliable compliance support to help businesses establish, manage, and grow with confidence. Our goal is to make the registration and compliance process simple, efficient, and hassle-free. <br><br> With professional guidance and dependable support, we help businesses stay compliant with regulatory requirements while focusing on what matters most—running and growing their business. <br><br> Reliable. Professional. Compliance-focused.
+      </p>
 
       <div class="about-card">
 
@@ -1773,13 +1890,11 @@ footer {
             letter-spacing:-.03em;
           "
         >
-          Don't let compliance become
-          a last-minute problem.
+          Let’s Get Your Business Registered.
         </h2>
 
         <p>
-          Set up a clear process for documents,
-          deadlines, filings, and follow-ups.
+          From registration to permits and government requirements, MVC helps you navigate the process from start to finish.
         </p>
 
       </div>
@@ -1790,7 +1905,7 @@ footer {
           class="primary"
           href="#contact"
         >
-          Talk to MVC
+        BOOK A CONSULTATION!
         </a>
 
       </div>
@@ -1916,18 +2031,18 @@ footer {
 
         <div class="client-logo">
           <img
-            src="https://www.cleanfuel.ph/wp-content/uploads/2022/02/new-logo3-06-border_1080.png"
+            src="https://gazz.com.ph/wp-content/uploads/2022/02/Petro-Gazz-Logo.png"
             alt="PENTACLEAN FUEL CORPORATION Logo"
           >
         </div>
 
         <h3>
-          PENTACLEAN FUEL CORPORATION
+          PETROGAZZ
         </h3>
 
         <a
           class="client-site"
-          href="https://www.cleanfuel.ph/"
+          href="https://gazz.com.ph/"
           target="_blank"
           rel="noopener"
         >
@@ -1993,30 +2108,29 @@ footer {
 
       <!-- CLIENT 7 -->
 
-      <!-- <article class="client-card">
+      <article class="client-card">
 
         <div class="client-logo">
-          <span>07</span>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnM-tkmfL0i8PwosXf7Xuxzf8Tw3L1XhytTzgulHmbGVu1-feAuVNWNyL5&s=10"
+            alt="SOCMA Logo"
+          >
         </div>
 
         <h3>
-          Client Name
+          SOCMA
         </h3>
-
-        <p>
-          Industry / Business Type
-        </p>
 
         <a
           class="client-site"
-          href="https://example.com"
+          href="https://www.socma-forklift.com/"
           target="_blank"
           rel="noopener"
         >
           Visit Website →
         </a>
 
-      </article> -->
+      </article>
 
 
       <!-- CLIENT 8 -->
@@ -2085,25 +2199,20 @@ footer {
     <div class="industries-grid">
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://cdn.prod.website-files.com/60c5cd401bc9c513f340a9f1/66d833e40872f9ae8c06bd2d_wholesale.jpg); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           01
         </div>
 
         <h3>
-          Retail &amp; Trading
+          Wholesale &amp; Retail Trading
         </h3>
-
-        <p>
-          Sales, purchases, inventory,
-          VAT, and recurring tax compliance.
-        </p>
 
       </article>
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://thumbs.dreamstime.com/b/financial-services-professional-team-service-work-hands-close-business-reports-paperwork-55062647.jpg); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           02
@@ -2113,52 +2222,36 @@ footer {
           Professional Services
         </h3>
 
-        <p>
-          Accounting and compliance support
-          for consultants, agencies,
-          and service providers.
-        </p>
-
       </article>
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://static.vecteezy.com/system/resources/thumbnails/011/106/868/small/team-of-diversity-engineer-is-looking-at-the-map-to-plan-on-construction-project-for-urban-planning-and-real-estate-development-concept-free-photo.jpg); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           03
         </div>
 
         <h3>
-          Construction
+          Construction and Real Estate
         </h3>
-
-        <p>
-          Business records, tax compliance,
-          payroll, and government documentation.
-        </p>
 
       </article>
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://media.istockphoto.com/id/176235240/photo/mature-couple-at-restaurant-ordering-food-and-drinks-from-the-waiter.jpg?s=612x612&w=0&k=20&c=GnFuKStoHWKEL8jb0nkm147TCxUEGskKPavs6S86JdM=); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           04
         </div>
 
         <h3>
-          Food &amp; Hospitality
+          Restaurants &amp; Resorts
         </h3>
-
-        <p>
-          Bookkeeping, payroll, permits,
-          and recurring compliance requirements.
-        </p>
 
       </article>
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://t4.ftcdn.net/jpg/02/50/31/83/360_F_250318394_Sv5grwCptbMlak5Rp4PtiDCsb6HYOUzg.jpg); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           05
@@ -2168,64 +2261,44 @@ footer {
           E-Commerce
         </h3>
 
-        <p>
-          Transaction records, sales documentation,
-          and tax compliance support.
-        </p>
-
       </article>
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://t3.ftcdn.net/jpg/20/10/83/18/360_F_2010831807_oDLSIgaJnW3PUTZMvsifwNK02brgrRx1.jpg); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           06
         </div>
 
         <h3>
-          Real Estate
+          Mining & Quarrying
         </h3>
-
-        <p>
-          Records and compliance support for
-          leasing and property-related businesses.
-        </p>
 
       </article>
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://thumbs.dreamstime.com/b/hispanic-man-control-truck-owner-driver-transportation-logistic-delivery-app-logistics-software-use-tablet-lorry-tracking-450836077.jpg); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           07
         </div>
 
         <h3>
-          Corporations &amp; OPCs
+          Logistics, Transports, and Tracking Services
         </h3>
-
-        <p>
-          SEC, eAFS, annual compliance,
-          bookkeeping, and tax requirements.
-        </p>
 
       </article>
 
 
-      <article class="industry">
+      <article class="industry" style="background-image: url(https://t3.ftcdn.net/jpg/20/04/04/18/360_F_2004041897_Qm2NqKAvFlRZTEttmttTbH2jMDQNhZ5U.jpg); background-blend-mode: overlay; background-position: center;">
 
         <div class="icon">
           08
         </div>
 
         <h3>
-          Startups &amp; SMEs
+          Manufacturing
         </h3>
-
-        <p>
-          Registration, bookkeeping,
-          compliance setup, and ongoing support.
-        </p>
 
       </article>
 
@@ -2239,7 +2312,7 @@ footer {
 
 <!-- TESTIMONIALS -->
 
-<section
+<!-- <section
   class="section"
   id="testimonials"
 >
@@ -2327,12 +2400,12 @@ footer {
 
   </div>
 
-</section>
+</section> -->
 
 
 <!-- FREE DEEDS -->
 
-<section
+<!-- <section
   class="section"
   id="free-deeds"
 >
@@ -2485,7 +2558,7 @@ footer {
 
   </div>
 
-</section>
+</section> -->
 
 
 <!-- PROCESS -->
@@ -2758,7 +2831,7 @@ footer {
               </strong>
 
               <span>
-                mvcconsultancyserv@gmail.com
+                mvcconsultancyserv.inquiry@gmail.com
               </span>
 
             </div>
@@ -2816,7 +2889,7 @@ footer {
 
           <a
             class="primary"
-            href="mailto:mvcconsultancyserv@gmail.com?subject=MVC%20Website%20Inquiry"
+            href="mailto:mvcconsultancyserv.inquiry@gmail.com?subject=MVC%20Website%20Inquiry"
           >
             ✉ Email MVC
           </a>
@@ -2946,6 +3019,10 @@ footer {
               </option>
 
               <option>
+                Business Registration (SEC/DTI, BIR, Mayor's Permit)
+              </option>
+
+              <option>
                 Bookkeeping &amp; Accounting
               </option>
 
@@ -2954,27 +3031,47 @@ footer {
               </option>
 
               <option>
-                Business Registration
+                SEC Compliance (GIS Creating &amp; Uploading, Amendment)
               </option>
 
               <option>
-                SEC / eAFS Compliance
+                Tax Audit
               </option>
 
               <option>
-                Payroll Support
+                Occupancy Permit Certifications 
               </option>
 
               <option>
-                Business Permit Assistance
+                Building Permits Certification 
               </option>
 
               <option>
-                Tax Clearance / Open Cases
+                Title Transfer/Lost Title 
               </option>
 
               <option>
-                Other Compliance Assistance
+                Land Conversion
+              </option>
+
+              <option>
+                Property Due Diligence
+              </option>
+
+              <option>
+                Import & Export Permit
+              </option>
+
+              <option>
+                PCAB Accreditations
+              </option>
+
+              <option>
+                PhilGEPS Accreditation 
+              </option>
+
+              <option>
+                Other Services (Birth Certificate Registration, TIN Registration, Visa Processing, Bank Loan/Financial Assistance, Labor Contract Assessment)
               </option>
 
             </select>
